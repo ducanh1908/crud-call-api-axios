@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useEffect, useState } from "react";
+import ListStudent from "./pages/students/show-list";
+import { Routes, Route } from "react-router-dom";
+import CreateStudents from "./pages/students/create";
+import UpdateStudent from "./pages/students/update";
 function App() {
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const param = {
+  //       _limit: 10,
+  //     };
+  //     const productList = await productApi.getAll(param);
+
+  //     console.log(productList);
+  //   };
+  //   fetchProducts();
+  // }, []);
+  // const [products, setProducts] = useState([]);
+
+  // const getProducts = async () => {
+  //   const params = {
+  //     _limit: 10,
+  //   };
+  //   await productApi.getAll(params).then((product) => {
+  //     setProducts(product);
+  //     console.log(product);
+  //   });
+  // };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        {/* <>
+          <p>list product </p>
+          <button onClick={getProducts}>get</button>
+          {products.map((product) => (
+            <div key={product.id}>
+              {product.name}|| {product.originalPrice}
+            </div>
+          ))}
+        </> */}
+        <Routes>
+          <Route path="/" element={<ListStudent />} />
+          <Route path="/students" element={<CreateStudents />} />
+          <Route path="/students/:id" element={<UpdateStudent />} />
+        </Routes>
+      </div>
     </div>
   );
 }
